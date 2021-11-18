@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import './add_task_bar.dart';
 import './widgets/default_button.dart';
 import './theme.dart';
 import '../services/notification_services.dart';
@@ -100,7 +101,8 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          MyDefaultButton(label: "+ Add Task", onPressed: () => null)
+          MyDefaultButton(
+              label: "+ Add Task", onPressed: () => Get.to(AddTaskPage()))
         ],
       ),
     );
