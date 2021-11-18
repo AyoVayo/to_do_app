@@ -1,10 +1,11 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:to_do_app/ui/widgets/default_button.dart';
 
+import './widgets/default_button.dart';
 import './theme.dart';
-import './widgets/button.dart';
 import '../services/notification_services.dart';
 import '../services/theme_services.dart';
 
@@ -15,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DateTime _selectedDate = DateTime.now();
   var notifyHelper;
   @override
   void initState() {
@@ -31,7 +33,48 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           _addTaskBar(),
+          _addDateBar(),
         ],
+      ),
+    );
+  }
+
+  _addDateBar() {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, left: 20),
+      child: DatePicker(
+        DateTime.now(),
+        height: 100,
+        width: 80,
+        initialSelectedDate: DateTime.now(),
+        selectionColor:
+            Get.isDarkMode ? Color(0xFFFFBB86FC) : Color(0xFFFF6200EE),
+        selectedTextColor: Get.isDarkMode ? Colors.black : Colors.white,
+        deactivatedColor: Get.isDarkMode ? Colors.white : Colors.black,
+        dateTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        dayTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        monthTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        onDateChange: (date) {
+          _selectedDate = date;
+        },
       ),
     );
   }
