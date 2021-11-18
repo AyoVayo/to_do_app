@@ -21,7 +21,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: FlexThemeData.light(scheme: FlexScheme.material),
+        theme: FlexThemeData.light(
+          scheme: FlexScheme.material,
+        ),
         darkTheme: FlexThemeData.dark(scheme: FlexScheme.material),
         themeMode: ThemeService().theme,
         home: HomePage());
