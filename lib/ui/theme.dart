@@ -33,3 +33,10 @@ TextStyle get subTitleStyle {
     fontWeight: FontWeight.w400,
   ));
 }
+
+TextStyle get dropDownStyle {
+  return GoogleFonts.lato(
+    textStyle: TextStyle(
+        fontSize: 14, color: Get.isDarkMode ? Colors.grey : Colors.black),
+  );
+}
