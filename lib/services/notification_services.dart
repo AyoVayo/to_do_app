@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
+import '../ui/notified_page.dart';
 import '../models/task.dart';
 
 class NotifyHelper {
@@ -48,7 +49,7 @@ class NotifyHelper {
       title,
       body,
       platformChannelSpecifics,
-      payload: 'Default_sound',
+      payload: title,
     );
   }
 
@@ -67,7 +68,7 @@ class NotifyHelper {
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
-      payload: "{task.title}|" + "{task.note}|",
+      payload: "${task.title}|" + "${task.note}|",
     );
   }
 
@@ -104,9 +105,10 @@ class NotifyHelper {
     } else {
       print("Notification Done");
     }
-    Get.to(() => Container(
-          color: Colors.white,
-        ));
+    if (payload == "Theme Changed") {
+    } else {
+      Get.to(() => NotifiedPage(label: payload));
+    }
   }
 
   Future onDidReceiveLocalNotification(
